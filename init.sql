@@ -2424,6 +2424,34 @@ INSERT INTO `sys_role_permission` (`id`, `role_id`, `permission_id`, `data_rule_
 COMMIT;
 
 -- ----------------------------
+-- Table structure for sys_sms_template
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_sms_template`;
+CREATE TABLE `sys_sms_template` (
+  `id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
+  `template_code` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '模板CODE',
+  `template_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '模板标题',
+  `template_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci COMMENT '模板内容',
+  `template_test_json` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci COMMENT '模板测试json',
+  `template_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '模板类型（1短信 2邮件 3微信 4站内信）',
+  `template_category` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '模板分类（notice通知公告 other其他）',
+  `use_status` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT '0' COMMENT '应用状态（1已应用 0未应用）',
+  `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `idx_template_code` (`template_code`) USING BTREE,
+  KEY `idx_template_type` (`template_type`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='消息模板表';
+
+-- ----------------------------
+-- Records of sys_sms_template
+-- ----------------------------
+BEGIN;
+COMMIT;
+
+-- ----------------------------
 -- Table structure for sys_table_white_list
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_table_white_list`;
